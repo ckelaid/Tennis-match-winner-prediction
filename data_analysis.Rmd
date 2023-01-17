@@ -1,0 +1,159 @@
+---
+title: "data_analysis"
+author: "Carlos Kelaidis"
+date: "7/16/2022"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# EDA
+
+```{r}
+library(tidyverse)
+```
+
+```{r}
+dat <- read.csv("~/Documents/My_working_directory/Personal_projects/Maine_tennis/OneDrive_1_1-17-2023/tennis_match_data_combined.csv")
+
+#View(dat)
+```
+
+```{r}
+summary(dat)
+```
+
+```{r}
+cor(dat)
+```
+
+
+```{r}
+# A bit more concentration of loss with higher unforced error count
+dat%>%
+  select(WINNERS, UNFORCED.ERRORS, WON.LOST, ACES, DOUBLE.FAULTS)%>%
+  ggplot(aes(x=WINNERS, y=UNFORCED.ERRORS)) +
+  geom_point(aes(col=WON.LOST))
+```
+
+```{r}
+# No real pattern discernible here
+dat%>%
+  select(WINNERS, UNFORCED.ERRORS, WON.LOST, ACES, DOUBLE.FAULTS)%>%
+  ggplot(aes(x=ACES, y=DOUBLE.FAULTS)) +
+  geom_point(aes(col=WON.LOST))
+```
+
+
+#### Service Analysis (all percentages)
+```{r}
+dat%>%
+  select(SERVICE.POINTS.WON.., X1st.SERVE.., X1st.SERVE.PTS.WON.., 
+         X2nd.SERVE.PTS.WON.., TOTAL.POINTS.WON.., WON.LOST)%>%
+  ggplot(aes(x=SERVICE.POINTS.WON.., y=TOTAL.POINTS.WON..)) +
+  geom_point(aes(col=WON.LOST))
+```
+
+Below 60% of service points won, we have a large majority of losers. Above 70% of service points won, we have a large majority of winners. Between 60% & 70% of servic epints won, it seems pretty even but more winners than losers. We also have some outliers (exceptions).
+
+
+
+
+
+```{r}
+dat%>%
+  select(SERVICE.POINTS.WON.., X1st.SERVE.., X1st.SERVE.PTS.WON.., 
+         X2nd.SERVE.PTS.WON.., TOTAL.POINTS.WON.., WON.LOST)%>%
+  ggplot(aes(x=SERVICE.POINTS.WON.., y=TOTAL.POINTS.WON..)) +
+  geom_point(aes(col=X1st.SERVE..))
+# you would think that 1st serve percentage has more to do with service pints won
+# 1st serve % does have its largest correlation (although low; 0.26) with service pts won
+
+```
+
+
+#### Return Aanalysis (all percentages)
+```{r}
+dat%>%
+  select(RETURN.POINTS.WON.., X1st.SERVE.RETURN.PTS.WON.., 
+         X2nd.SERVE.RETURN.PTS.WON.., TOTAL.POINTS.WON.., WON.LOST)%>%
+  ggplot(aes(x=TOTAL.POINTS.WON.., y=RETURN.POINTS.WON..)) +
+  geom_point(aes(col=WON.LOST))
+```
+
+
+
+
+
+# Analysis of the variables used for the most performant models
+
+#### Best Performing Radial SVM variables
+DOUBLE.FAULTS + X1st.SERVE.. + SERVICE.POINTS.WON.. + RETURN.POINTS.WON..
+```{r}
+dat%>%
+  select(X1st.SERVE.., SERVICE.POINTS.WON.., WON.LOST, RETURN.POINTS.WON.., DOUBLE.FAULTS)%>%
+  ggplot(aes(x=X1st.SERVE.., y=SERVICE.POINTS.WON..)) +
+  geom_point(aes(col=WON.LOST))
+```
+
+
+Clear split for Service points won percentage
+
+
+# PCA
+```{r}
+# fit PCA wihtout response
+pr.out<-prcomp(dat_101[,-12], scale=T)
+#pr.out$center#mean of variables prior to PCA
+
+#1st two PCs
+biplot(pr.out, scale=0) #its a clusterfuck
+
+
+```
+
+From the above we can tell that the following variables seem correlated with eachother:
+
+- return.points.won, 2nd & 1st.serve.return.pts.won
+
+- Unforced.errors, double.faults
+- Aces, winners
+
+- serve.points.won, 2nd & 1st.serve.pts.won
+
+Proportion of variance explained (PVE) by each PC
+```{r}
+#variance over total variance
+(pr.out$sdev)^2/sum((pr.out$sdev)^2)
+```
+
+Not much, 1st PC only 26% and lower as we go. Shite!
+
+### Clustering on the PCs
+
+
+# Clustering
+```{r}
+# dat is not normalized or standardized
+# dat_101 is normalized
+
+# Plotting 1st_serve_% VS Servie_points_won_%
+plot(dat[c(3,10)])
+```
+
+### K-means clustering
+
+Start with K = 2:
+```{r}
+km.out<-kmeans(dat[c(3,10)], 2, nstart=20)
+km.out
+```
+
+```{r}
+plot(dat[c(3,10)], col=(km.out$cluster+2), main="K-Means Clustering Results with K=2", 
+     xlab="", ylab="", pch=20, cex=2)
+```
+
+Using 2 clusters, K-means clusters quite accurately as we can see, green is the Winners and blue is the Losers.
