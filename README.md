@@ -16,3 +16,4 @@ Some basic EDA to see how varibales relate to eachother
 <img src="Images/totpts_vs_servepts.png" width="500" height="300"> 
 
 
+### Variable Selection
