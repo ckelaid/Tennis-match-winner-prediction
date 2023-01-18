@@ -7,5 +7,14 @@ In this project, I built a scraper to scrape tennis match statistics from atptou
 ### EDA
 
 Some basic EDA to see how varibales relate to eachother
-![Image]()
+
+![Image](Images/retpts_vs_totpts.png)
+
+
+
+![Image](Images/servepts_vs_1stserve.png)
+
+
+
+![Image](Images/totpts_vs_servepts.png)
 
