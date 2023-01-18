@@ -8,13 +8,13 @@ In this project, I built a scraper to scrape tennis match statistics from atptou
 
 Some basic EDA to see how varibales relate to eachother
 
-<img src="Images/retpts_vs_totpts.png" width="600" height="400">
+<img src="Images/retpts_vs_totpts.png" width="500" height="300">
 
 
 
-<img src="Images/servepts_vs_1stserve.png" width="600" height="400">
+<img src="Images/servepts_vs_1stserve.png" width="500" height="300">
 
 
 
-<img src="Images/totpts_vs_servepts.png" width="600" height="400">
+<img src="Images/totpts_vs_servepts.png" width="500" height="300">
 
