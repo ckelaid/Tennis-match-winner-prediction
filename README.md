@@ -12,9 +12,9 @@ Some basic EDA to see how varibales relate to eachother
 
 
 
-![Image](Images/servepts_vs_1stserve.png)
+<img src="Images/servepts_vs_1stserve.png" width="600" height="400">
 
 
 
-![Image](Images/totpts_vs_servepts.png)
+<img src="Images/totpts_vs_servepts.png" width="600" height="400">
 
