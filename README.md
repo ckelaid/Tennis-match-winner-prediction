@@ -8,7 +8,7 @@ In this project, I built a scraper to scrape tennis match statistics from atptou
 
 Some basic EDA to see how varibales relate to eachother
 
-![](Images/retpts_vs_totpts.png | width=100)
+![Image](Images/retpts_vs_totpts.png)
 
 
 
