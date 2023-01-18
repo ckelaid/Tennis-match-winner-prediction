@@ -11,18 +11,8 @@ Some basic EDA to see how varibales relate to eachother
 <pfloat="left">
   <img src="Images/retpts_vs_totpts.png" width="500" height="300" />
   <img src="Images/servepts_vs_1stserve.png" width="500" height="300" /> 
-  <img src="Images/totpts_vs_servepts.png" width="500" height="300"> />
 </p>
 
+<img src="Images/totpts_vs_servepts.png" width="500" height="300"> />
 
-
-<img src="Images/retpts_vs_totpts.png" width="500" height="300">
-
-
-
-<img src="Images/servepts_vs_1stserve.png" width="500" height="300">
-
-
-
-<img src="Images/totpts_vs_servepts.png" width="500" height="300">
 
