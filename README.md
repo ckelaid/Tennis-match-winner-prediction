@@ -22,3 +22,5 @@ Here I performed **Best Subset Selection** and use BIC, Adj-R2 and Cp to evaluat
 
 <img src="Images/BSS_scores.png" width="500" height="300" />
 
+Also performed Lasso using CV to pick the best $\lambda$ value
+
