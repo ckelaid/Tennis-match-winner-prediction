@@ -13,14 +13,14 @@ Some basic EDA to see how varibales relate to eachother
   <img src="Images/servepts_vs_1stserve.png" width="500" height="300" /> 
 </p>
 
-<img src="Images/totpts_vs_servepts.png" width="700" height="300"> 
+<img src="Images/totpts_vs_servepts.png" width="500" height="300"> 
 
 
 ### Variable Selection
 
 Here I performed **Best Subset Selection** and use BIC, Adj-R2 and Cp to evaluate the models based on the number of variables
 
-<img src="Images/BSS_scores.png" width="500" height="300" />
+<img src="Images/BSS_scores.png" width="700" height="400" />
 
 Also performed Lasso using CV to pick the best $\lambda$ value and see what how many and which variables were picked in this case
 
