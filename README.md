@@ -26,4 +26,7 @@ Also performed Lasso using CV to pick the best $\lambda$ value and see what how 
 
 <img src="Images/Lasso_lambda.png" width="500" height="300" />
 
+Ended up being between a 4 to 7 variable model.
 
+
+### Model Fitting & Evaluation
