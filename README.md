@@ -6,6 +6,8 @@ In this project, I built a scraper to scrape tennis match statistics from atptou
 
 ### EDA
 
+[Code](https://github.com/ckelaid/Tennis-match-winner-prediction/blob/main/data_analysis.Rmd) 
+
 Some basic EDA to see how varibales relate to eachother
 
 <p float="left">
@@ -16,7 +18,11 @@ Some basic EDA to see how varibales relate to eachother
 <img src="Images/totpts_vs_servepts.png" width="500" height="300"> 
 
 
-### Variable Selection
+### Data Preprocessing & Variable Selection
+
+[Code](https://github.com/ckelaid/Tennis-match-winner-prediction/blob/main/data_preprocess_var_selection.Rmd) 
+
+First had to normalize the data - using min max normalization - as it contained a mix of percentages and counts.
 
 Here I performed **Best Subset Selection** and use BIC, Adj-R2 and Cp to evaluate the models based on the number of variables
 
