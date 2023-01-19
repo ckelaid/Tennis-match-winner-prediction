@@ -18,7 +18,7 @@ Some basic EDA to see how varibales relate to eachother
 
 ### Variable Selection
 
-Here I performed **Best Subset Selection** and use AIC, Adj-R2 and Cp to evaluate the models based on the number of variables
+Here I performed **Best Subset Selection** and use BIC, Adj-R2 and Cp to evaluate the models based on the number of variables
 
 <img src="Images/BSS_scores.png" width="500" height="300" />
 
